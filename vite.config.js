@@ -17,4 +17,5 @@ export default defineConfig({
       '/gossip': 'https://lab.jx3api.com',
     },
   },
+  base: '/rumors/',
 })
