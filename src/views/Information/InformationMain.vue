@@ -90,13 +90,15 @@ const errorMessage = ref('')
 const showResultsArea = computed(() => isLoading.value || summary.value || errorMessage.value)
 
 const handleSubmit = () => {
+  console.log(import.meta.env)
+
   if (!formRef.value) return
   formRef.value.validate(async (valid) => {
     if (valid) {
       isLoading.value = true
       summary.value = ''
       errorMessage.value = ''
-      const { data } = await axios.post('/gossip/api/summary', form)
+      const { data } = await axios.post(import.meta.env.VITE_APP_BASEAPI + '/gossip/api/summary', form)
       if (data.code == 200) {
         ElMessage.success('吃瓜完成！')
         isLoading.value = false
