@@ -40,7 +40,7 @@
 
               <el-form-item>
                 <el-button type="primary" @click="handleSubmit" :loading="isLoading" size="large" style="width: 100%" :icon="Promotion">
-                  {{ isLoading ? '分析中...' : '开始分析' }}
+                  {{ isLoading ? '吃瓜中...' : '开始吃瓜' }}
                 </el-button>
               </el-form-item>
             </el-form>
@@ -49,7 +49,7 @@
           <el-card shadow="never" class="results-panel" v-if="showResultsArea">
             <template #header>
               <div class="card-header">
-                <span>分析结果</span>
+                <span>吃瓜结果</span>
                 <el-button v-if="summary" type="primary" link @click="copySummary" :icon="CopyDocument">复制结果</el-button>
               </div>
             </template>
@@ -58,7 +58,7 @@
             <div v-if="summary && !isLoading && !errorMessage" class="summary-content">
               <el-input v-model="summary" type="textarea" :autosize="{ minRows: 5 }" readonly />
             </div>
-            <el-empty v-if="!summary && !isLoading && !errorMessage" description="暂无分析结果，请先提交分析任务" />
+            <el-empty v-if="!summary && !isLoading && !errorMessage" description="暂无吃瓜结果，请先提交吃瓜任务" />
           </el-card>
         </el-col>
       </el-row>
@@ -98,12 +98,12 @@ const handleSubmit = () => {
       errorMessage.value = ''
       const { data } = await axios.post('/gossip/api/summary', form)
       if (data.code == 200) {
-        ElMessage.success('分析完成！')
+        ElMessage.success('吃瓜完成！')
         isLoading.value = false
         summary.value = `标题：${data.data.title}\r\n一句话：${data.data.abstract}\r\n关键字：${data.data.keywords}\r\n人物：${data.data.characters}\r\n类型：${data.data.category}\r\n内容：${data.data.summary}`
       } else {
-        errorMessage.value = '分析失败，无法连接到AI服务或帖子ID无效。请稍后重试。'
-        ElMessage.error('分析失败！')
+        errorMessage.value = '吃瓜失败，无法连接到AI服务或帖子ID无效。请稍后重试。'
+        ElMessage.error('吃瓜失败！')
         isLoading.value = false
       }
     } else {
