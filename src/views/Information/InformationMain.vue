@@ -78,7 +78,7 @@ import axios from 'axios'
 const formRef = ref(null)
 const form = reactive({
   gossip_id: '',
-  only_thread_author: false, // 对应截图中的 "True"
+  only_thread_author: true, // 对应截图中的 "True"
   max_output_tokens: 2048, // 对应截图中的 2048
   temperature: 0, // 对应截图中的 0 (但 temperature 通常不会是0，0.7是个常用值)
 })
